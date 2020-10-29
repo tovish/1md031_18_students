@@ -2,8 +2,96 @@
 <html lang="en">
     <head>
         <title>MIN HEMSIDA</title>
+        <meta charset="utf-8"/>
     </head>
     <body>
-        <h1>Hej världen :) hejsan</h1>
+        <header><h1>TOVA'S DELICIOUS BURGERS </h1></header>
+        <h2> Our burgers:</h2>
+        <table> 
+            <thead>
+                <tr>
+                    <th><h3>Our favourit Monday's burger</h3></th>
+                    <th><h3>The messy Friday burger</h3></th>
+                    <th><h3>Our most cheesy burger</h3></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="../hamburg.jpg" alt="hamburgarealternativ1" title="Hamburgare nr 1" width="500"></td>
+                    <td><img src="../hamburg1.jpg" alt="hamburgarealternativ2" title="Hamburgare nr 2" width="500"> </td>
+                    <td><img src="../burgare2.png" alt="hamburgarealt3" title="Hamburgare nr 3" width="500"> </td>
+                </tr>       
+                <tr>
+                    <td>
+                        <ul>
+                            <li>Biffhamburgare med grönsaker, ost och kött.</li>
+                            <li>Mycket god.</li>
+                            <li>Innehåller gluten, mjölkprodukter och kött.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Biffhamburgare med grönsaker, ost, bacon och kött.</li>
+                            <li>Godast på fredagar.</li>
+                            <li>Innehåller gluten, mjölkprodukter och gris (bacon).</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Halloumiburgare med fokus på avokado och grönsaker. </li>
+                            <li>Vegetariskt alternativ.</li>
+                            <li>Ost från Cypern, avokado från Sydafrika och svenska grönsaker.</li>
+                        </ul>
+                    </td>
+                </tr>    
+            </tbody>
+        </table>
+        
+
+
+        <h2> Våra pommes:</h2>
+        <img src="../pommes.jpg" alt="pommesalternativ1" title="Pommes nr 1" width="400">
+        <h3> Pommes av potatis.</h3>
+
+        <img src="../pommes1.gif" alt="pommesalternativ2" title="Pommes nr 2" width="400">
+        <h3> Pommes av sötpotatis.</h3> 
+
+        <h2> Leveransinformation: </h2>
+        <p> Vi levererar bara i centrala Uppsala.</p>
+
+        <p>
+            <label for="firstname">Full name</label><br>
+            <input type="text" id="firstname" name="fn" required="required" placeholder="First- and last name">
+        </p>
+        <p>
+            <label for="email">E-mail address</label><br>
+            <input type="text" id="email" name="em" required="required" placeholder="E-mail address">
+        </p>
+        <p>
+            <label for="street">Street</label><br>
+            <input type="text" id="street" name="st" required="required" placeholder="Street name">
+        </p>
+        <p>
+            <label for="house nr">House</label><br>
+            <input type="number" id="house" name="ho" required="required" placeholder="House number">
+        </p>
+
+        <p><h3>Please select your gender below:</h3> </p>
+        <p>
+            <input type="radio" id="female" name="gender" value="female" >
+            <label for="female">Female</label><br>
+        </p>
+        <p>
+            <input type="radio" id="male" name="gender" value="male" >
+            <label for="male">Male</label><br> 
+        </p>
+        <p>
+            <input checked type="radio" id="other" name="gender" value="other" >
+            <label for="other">Other</label><br> 
+        </p>
+        <p>
+            <input checked type="radio" id="dont" name="gender" value="dont" >
+            <label for="dont">Do not wish to provide</label><br> 
+        </p>
     </body>
 </html>
