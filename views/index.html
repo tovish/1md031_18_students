@@ -30,27 +30,32 @@
                 <img v-bind:src=burger.img width="480px">
                 <ul>
                     <li> {{burger.kCal}} kCal </li>
-                    <li v-if=burger.lactose> Contains lactose </li>
-                    <li v-if=burger.gluten> Contains gluten </li>
+                    <li v-if=burger.lactose> Contains <b> lactose </b> </li>
+                    <li v-if=burger.gluten> Contains <b> gluten </b> </li>
                 </ul>
                 <p> Add to cart <input type='checkbox' :id='burger.name'> </p>
             </div>
-
         </div>
 
         <div id="costumer">
             <form id="delinfo">
-                <h2> Leveransinformation: </h2>
-                <p> Vi levererar bara i centrala Uppsala.</p>
+                <h2> Customer information: </h2>
+                <p> This is were you provide neccessary information</p>
 
+                <!-- Ange namn -->
                 <p>
-                    <label for="name">Full name</label><br>
-                    <input type="text" id="name" name="name" required="required" placeholder="First- and last name">
+                <h3>Please enter your name below:</h3>
+                <label for="name">Full name</label><br>
+                <input type="text" id="name" name="name" required="required" placeholder="First- and last name">
                 </p>
+
+                <!-- Ange email -->
                 <p>
                     <label for="email">E-mail address</label><br>
                     <input type="text" id="email" name="email" required="required" placeholder="E-mail address">
                 </p>
+
+                <!-- Vilket kön har du -->
                 <p>
                 <h3>Please select your gender below:</h3>
                 </p>
@@ -72,9 +77,10 @@
                         <label for="dont">Do not wish to provide</label><br>
                     </p>
                 </div>
+
+                <!-- Payment options -->
                 <p>
-                <h3>
-                    <label for="payment">Payment options</label></h3>
+                <h3> <label for="payment">Payment options</label></h3>
                 <select id="payment" name="pay">
                     <option>Swish</option>
                     <option>Credit card</option>
@@ -83,9 +89,10 @@
                     <option>Cash</option>
                 </select>
                 </p>
-
             </form>
-            <h3> Please put the dot on delivery adress in map</h3>
+
+            <!-- Kartan -->
+            <h4> Please put the dot on delivery address in map</h4>
             <div class="view-box">
                 <div id="dots" v-on:click="displayOrder">
                     <div v-bind:style="{ left: details.x + 'px', top: details.y + 'px'}">
@@ -95,18 +102,28 @@
             </div>
         </div>
 
+        <!-- Knappen -->
         <div id="placeOrder">
-            <button v-on:click="clickButtonVue"><img src="/img/button.jpg" width="30" height="40"> 
+            <button v-on:click="clickButtonVue"><img src="/img/button.jpg" width="30" height="40">
                 I'm hungry, place my order!
             </button>
         </div>
 
-        <div v-for="info in orderInfo">
-            <p> {{info}} </p>
-        </div>
+        <!-- Här skrivs orderconfirmation ut -->
+        <h4> Customer & delivery details </h4> 
+        <b> Name: </b> {{ orderInfo[0]}} <br>
+        <b> Email: </b> {{ orderInfo[1] }} <br>
+        <b> Payment: </b> {{ orderInfo[2] }} <br>
+        <b> Gender: </b> {{ orderInfo[3] }} <br> 
+        <b> Deliver to: </b> x: {{ this.details.x }}, y: {{this.details.y }} <br> <br>
+        <h4> Order summary </h4>
+        <ul>
+            <div v-for="info in orderInfo[4]">
+                <li> {{ info }} </p>
+            </div>
+        </ul>
+        
     </main>
-
-
 
     <footer>
         <hr> <br>
