@@ -1,113 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>MIN HEMSIDA</title>
-        <meta charset="utf-8"/>
-    </head>
-    <body>
-        <header>
-            <h1>TOVA'S DELICIOUS BURGERS </h1>
-            <br> <h4>We hope you're hungry...</h4>
-        </header>
 
-        <main>
-            <h2> Our burgers:</h2>
-            <table> 
-                <thead>
-                    <tr>
-                        <th><h3>Tova's favourite Monday burger</h3></th>
-                        <th><h3>Tova's messy Friday burger</h3></th>
-                        <th><h3>Tova's most cheesy burger</h3></th>
-                    </tr>
-                </thead>
+<head>
+    <title>MIN HEMSIDA</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/deli-very.css">
+    <script src="/socket.io/socket.io.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script src="/js/js_script.js" defer></script>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="/js/vue_script.js" defer></script>
 
-                <tbody>
-                    <tr>
-                        <td><img src="../hamburg.jpg" alt="hamburgarealternativ1" title="Hamburgare nr 1" width="480"></td>
-                        <td><img src="../hamburg1.jpg" alt="hamburgarealternativ2" title="Hamburgare nr 2" width="480"> </td>
-                        <td><img src="../burgare2.png" alt="hamburgarealt3" title="Hamburgare nr 3" width="480"> </td>
-                    </tr>       
-                    <tr>
-                        <td>
-                            <ul>
-                                <li>Biffhamburgare med grönsaker, ost och kött.</li>
-                                <li>Mycket god.</li>
-                                <li>Innehåller gluten, mjölkprodukter och kött.</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Biffhamburgare med grönsaker, ost, bacon och kött.</li>
-                                <li>Godast på fredagar.</li>
-                                <li>Innehåller gluten, mjölkprodukter och gris (haram/kosher).</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Halloumiburgare med fokus på avokado och grönsaker. </li>
-                                <li>Vegetariskt alternativ.</li>
-                                <li>Gluten free buns and halloumi cheese.</li>
-                            </ul>
-                        </td>
-                    </tr>    
-                </tbody>
-            </table>
+</head>
 
-            <form><h2> Leveransinformation: </h2> 
+<body>
+    <header>
+        <h1 id="headline"> TOVA'S DELICIOUS BURGERS </h1>
+    </header>
+
+    <main id="main">
+        <div id="hamburgarna">
+            <div class="box a">
+                <h2> Our burgers: </h2>
+            </div>
+            <!-- Här är min Vue-kod :) -->
+            <div v-for="burger in menu">
+                <h3> {{burger.name}} </h3>
+                <img v-bind:src=burger.img width="480px">
+                <ul>
+                    <li> {{burger.kCal}} kCal </li>
+                    <li v-if=burger.lactose> Contains lactose </li>
+                    <li v-if=burger.gluten> Contains gluten </li>
+                </ul>
+                <p> Add to cart <input type='checkbox' :id='burger.name'> </p>
+            </div>
+
+        </div>
+
+        <div id="costumer">
+            <form id="delinfo">
+                <h2> Leveransinformation: </h2>
                 <p> Vi levererar bara i centrala Uppsala.</p>
 
                 <p>
-                    <label for="firstname">Full name</label><br>
-                    <input type="text" id="firstname" name="fn" required="required" placeholder="First- and last name">
+                    <label for="name">Full name</label><br>
+                    <input type="text" id="name" name="name" required="required" placeholder="First- and last name">
                 </p>
                 <p>
                     <label for="email">E-mail address</label><br>
-                    <input type="text" id="email" name="em" required="required" placeholder="E-mail address">
+                    <input type="text" id="email" name="email" required="required" placeholder="E-mail address">
                 </p>
                 <p>
-                    <label for="street">Street</label><br>
-                    <input type="text" id="street" name="st" required="required" placeholder="Street name">
+                <h3>Please select your gender below:</h3>
                 </p>
+                <div id="gender">
+                    <p>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label><br>
+                    </p>
+                    <p>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label><br>
+                    </p>
+                    <p>
+                        <input checked type="radio" id="other" name="gender" value="other">
+                        <label for="other">Other</label><br>
+                    </p>
+                    <p>
+                        <input checked type="radio" id="dont" name="gender" value="dont">
+                        <label for="dont">Do not wish to provide</label><br>
+                    </p>
+                </div>
                 <p>
-                    <label for="house nr">House</label><br>
-                    <input type="number" id="house" name="ho" required="required" placeholder="House number">
+                <h3>
+                    <label for="payment">Payment options</label></h3>
+                <select id="payment" name="pay">
+                    <option>Swish</option>
+                    <option>Credit card</option>
+                    <option>Klarna</option>
+                    <option>Gift card</option>
+                    <option>Cash</option>
+                </select>
                 </p>
 
-                <p><h3>Please select your gender below:</h3> </p>
-                <p>
-                    <input type="radio" id="female" name="gender" value="female" >
-                    <label for="female">Female</label><br>
-                </p>
-                <p>
-                    <input type="radio" id="male" name="gender" value="male" >
-                    <label for="male">Male</label><br> 
-                </p>
-                <p>
-                    <input checked type="radio" id="other" name="gender" value="other" >
-                    <label for="other">Other</label><br> 
-                </p>
-                <p>
-                    <input checked type="radio" id="dont" name="gender" value="dont" >
-                    <label for="dont">Do not wish to provide</label><br> 
-                </p>
-                <p>
-                    <label for="payment">Payment options</label><br>
-                    <select id="payment" name="pay">
-                        <option>Swish</option>
-                        <option>Credit card</option>
-                        <option>Klarna</option>
-                        <option>Gift card</option>
-                        <option>Cash</option>
-                    </select>
-                </p>
-                <button type="submit"><img src="../button.jpg" width="30"> I'm hungry, place my order! </button>
-                
             </form>
-        </main>
-        <footer>
-            <hr> <br>
-            <p>Copyright Tova's delicious burgers AB </p>
+            <h3> Please put the dot on delivery adress in map</h3>
+            <div class="view-box">
+                <div id="dots" v-on:click="displayOrder">
+                    <div v-bind:style="{ left: details.x + 'px', top: details.y + 'px'}">
+                        T
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        </footer>
-    </body>
+        <div id="placeOrder">
+            <button v-on:click="clickButtonVue"><img src="/img/button.jpg" width="30" height="40"> 
+                I'm hungry, place my order!
+            </button>
+        </div>
+
+        <div v-for="info in orderInfo">
+            <p> {{info}} </p>
+        </div>
+    </main>
+
+
+
+    <footer>
+        <hr> <br>
+        <p> Copyright Tova's delicious burgers AB </p>
+    </footer>
+
+</body>
+
 </html>
